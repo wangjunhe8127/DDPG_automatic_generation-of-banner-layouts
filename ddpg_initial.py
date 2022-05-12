@@ -17,10 +17,8 @@ TAU = 0.01
 MEMORY_CAPACITY = 10000
 BATCH_SIZE = 32
 RENDER = False
-ENV_NAME = 'Pendulum-v1'
+ENV_NAME = 'my-v0'
 #ENV_NAME = 'LayoutEnv-v0'
-
-
 ########################## DDPG Framework ######################
 class ActorNet(nn.Module):  # define the network structure for actor and critic
     def __init__(self, s_dim, a_dim):
@@ -69,7 +67,8 @@ class DDPG(object):
         self.loss_func = nn.MSELoss()
 
     def store_transition(self, s, a, r, s_):  # how to store the episodic data to buffer
-        transition = np.hstack((s, a, [r], s_))
+        # print(s,'a',a,'r',r,'ss',s_)
+        transition = np.hstack((s, a, [[r]], s_))
         index = self.pointer % MEMORY_CAPACITY  # replace the old data with new data
         self.memory[index, :] = transition
         self.pointer += 1

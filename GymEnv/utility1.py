@@ -10,9 +10,10 @@ class ABC():
     def update_points(self, action):
         for i in range(7):
             # 动作按顺序分别表示上、下、左、右。对应a[0],a[1],a[2],a[3]。基于此，在env.py中定义动作各个值都大于0，取值为[0,5]
-            a = action[i:i+4]
+            a = action[0][i*4:(i+1)*4]
             # 如果想要整数移动就打开下面一行代码的注释
             # a = [int(a[k]) for k in range(4)]
+            # print(a)
             a_right = a[3]-a[2]
             a_down = a[1]-a[0]
             self.points_now[i][0] = min(self.points_now[i][0]+a_right,self.points_limit[i][1]) \
@@ -64,6 +65,7 @@ class ABC():
     def reset_ABC(self):
         self.init_layout()
         self.compute_points_limit()
+        self.points_now = []
         self.init_points()
 
     # 测试时直接使用固定的位置测试,这个函数暂时没用到，后面你可以自己加
