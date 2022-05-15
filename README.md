@@ -11,4 +11,4 @@
 5、预留了测试现况位置，也就是固定住，方便测试使用，暂时没用到  
   
 论文效果图：  
-
+![image](https://github.com/wangjunhe8127/DDPG_automatic_generation-of-banner-layouts/blob/main/1.png)  
